@@ -1,0 +1,7 @@
+export const words = [
+  "APPLE", "BAKER", "CRANE", "DRIVE", "EAGLE", "FLAME", "GRAPE", "HEART", "IDEAL", "JOLLY",
+  "KARMA", "LUNAR", "MANGO", "NOBLE", "OCEAN", "PIANO", "QUEEN", "RIVAL", "SUNNY", "TIGER",
+  "UMBRA", "VIVID", "WITTY", "XENON", "YACHT", "ZEBRA", "AMBER", "BRISK", "CHARM", "DIZZY",
+  "EPOCH", "FABLE", "GLIDE", "HASTE", "INBOX", "JAUNT", "KNOCK", "LATCH", "MIRTH", "NERDY",
+  "OPTIC", "PRIDE", "QUIRK", "RISKY", "SPICE", "TREND", "ULTRA", "VAPOR", "WALTZ", "ZESTY"
+];

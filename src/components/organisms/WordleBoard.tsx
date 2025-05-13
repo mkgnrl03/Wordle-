@@ -2,6 +2,9 @@ import { useEffect, useState } from "react"
 import { useWindowSize, useAudio } from 'react-use'
 import Confetti from "react-confetti"
 import Row from "../Row"
+import { getDailyWord } from "../../api/getDailyWord"
+import { Button } from "../ui/button"
+import { RotateCcw } from 'lucide-react';
 
 export default function WordleBoard() {
   const NUM_TRIES = 5
@@ -40,14 +43,11 @@ export default function WordleBoard() {
 
   useEffect(() => {
     async function getWordOfTheDay() {
+      // mocking api fetch
       try{
-        const res = await fetch("http://localhost:8080/api/v1/word-of-the-day")
-        const json = await res.json()
-
-        if(res.ok){
-          setWord(json.data)
-          setTrials(["current", ...Array(NUM_TRIES-1).fill(null)])
-        }
+        const word = await getDailyWord()
+        setWord(word)
+        setTrials(["current", ...Array(NUM_TRIES-1).fill(null)])
       }
       catch(e) {
         console.error(e)
@@ -149,25 +149,21 @@ export default function WordleBoard() {
              <h2 className="font-bold text-4xl">{tries}</h2>
              <p className="mt-2">Tries left</p>
           </div>
-          {/* <div className="bg-gray-100 rounded-sm h-fit p-6 border">
-            <h2 className="font-semibold text-md">Guesses</h2>
-            {
-              trials.map((row, index) =>
-              <p 
-                key={index+`${row}`}
-                className="text-sm mt-2"
-              >
-                  {index+1}: {
-                    row 
-                      ? row === "current" ? guess : row
-                      : "" 
-                  }
-                </p>
-              )
-            }
-          </div> */}
         </div>
       </div>
+      {
+        gameStatus === "finish" 
+          ? <div className="mt-24 flex flex-col items-center justify-between">
+              <Button 
+              className="rounded-full bg-white text-black border hover:bg-white hover:text-black hover:scale-110"
+              onClick={() => window.location.reload()}
+              >
+                <RotateCcw size={96}/>
+              </Button>
+              <p className="mt-2 text-lg font-normale">Restart</p>
+            </div>
+          : ""
+      }
     </div>
   )
 }
