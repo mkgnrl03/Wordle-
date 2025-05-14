@@ -33,11 +33,11 @@ export const WordleBoard = ({ word }: WordleBoardProp) => {
 
   const { width, height } = useWindowSize()
   const audio1 = useAudio({
-    src: './src/assets/sound-effects/applaud-win.wav',
+    src: './src/assets/sound-effects/applaud-win.mp3',
     autoPlay: false
   });
   const audio2 = useAudio({
-    src: './src/assets/sound-effects/win2.wav',
+    src: './src/assets/sound-effects/win2.mp3',
     autoPlay: false
   });
 
