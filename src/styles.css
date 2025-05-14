@@ -3,6 +3,27 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* 
+light
+
+--text: #121711;
+--background: #f9faf9;
+--primary: #7f9c7c;
+--secondary: #b3bac6;
+--accent: #9996b0; 
+
+
+dark
+
+--text: #e9eee8;
+--background: #050605;
+--primary: #668363;
+--secondary: #39404c;
+--accent: #524f69;
+
+*/
+
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
