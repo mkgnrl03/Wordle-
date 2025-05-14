@@ -2,7 +2,7 @@ import DailyWordle from "./pages/DailyWordle"
 
 function App() {
   return (
-    <div>
+    <div className="h-dvh">
       <DailyWordle />
     </div>
   )

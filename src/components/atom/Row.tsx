@@ -24,16 +24,14 @@ export default function Row({ wordLength, guess, word, isChecked }: RowProp) {
   function getLetterClass(letter: string, index: number): string {
     let style = ""
 
-    if(!isChecked){
-      return style
-    }
+    if(!isChecked) return style
 
     if(word.includes(letter)){
       style = word[index] === letter ? "bg-green-300" : "bg-yellow-300"
-    }
-    else {
+    } else {
       style = "bg-red-300"
     }
+    
     return style
   }
 
@@ -43,7 +41,7 @@ export default function Row({ wordLength, guess, word, isChecked }: RowProp) {
           letters.map((letter, index) => (
             <div 
               key={letter.value+index}
-              className={`p-2 w-16 aspect-square border rounded shadow-md border-black grid place-items-center
+              className={`font-semibold text-xl p-2 w-12 sm:w-16 aspect-square border rounded shadow-md border-black grid place-items-center
                 ${letter.class}  
               `}
             >
