@@ -144,7 +144,6 @@ export const WordleBoard = ({ word }: WordleBoardProp) => {
 
   return (
     <div className="mt-6 sm:mt-16 flex flex-col items-center justify-center">
-      {word}
       {audio1[0]} 
       {audio2[0]}
       <Confetti
