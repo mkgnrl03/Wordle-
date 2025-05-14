@@ -8,7 +8,6 @@ import Keyboard from "@/components/molecule/Keyboard"
 import { useWordleStore } from "@/store/useWordleStore"
 import type { KeyStatus } from "@/types/wordle-store"
 
-
 type WordleBoardProp = {
   word: string
 }
@@ -20,7 +19,6 @@ export const WordleBoard = ({ word }: WordleBoardProp) => {
   const BACKSPACE_KEY = "BACKSPACE"
   const ENTER_KEY = "ENTER"
 
-  // const [word, setWord] = useState<string>("")
   const [guess, setGuess] = useState<string>("")
   const [trials, setTrials] = useState<Array<string | null>>([])
   const [keyPressed, setKeyPressed] = useState<string>("")
@@ -146,7 +144,9 @@ export const WordleBoard = ({ word }: WordleBoardProp) => {
 
   return (
     <div className="mt-6 sm:mt-16 flex flex-col items-center justify-center">
-      {audio1[0]} {audio2[0]}
+      {word}
+      {audio1[0]} 
+      {audio2[0]}
       <Confetti
         width={width}
         height={height}

@@ -40,7 +40,7 @@ function KeyboardKey({ letter, clickHandler }: Prop) {
         className={`${globalStyle} text-[12px]`}
         onClick={() => clickHandler(letter)}
       >
-          ENTER
+          ↵ Enter
       </button>
     )
   }
@@ -48,12 +48,10 @@ function KeyboardKey({ letter, clickHandler }: Prop) {
   if(isBackspaceKey){
     return (
       <button 
-        className={`${globalStyle} px-3 sm:px-8`}
+        className={`${globalStyle} px-3 sm:px-7`}
         onClick={() => clickHandler(letter)}
       >
-        <p>
-          [x]
-        </p>
+        [ x ]
       </button>
     )
   }
