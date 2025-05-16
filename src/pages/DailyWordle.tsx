@@ -2,10 +2,17 @@ import { getDailyWord } from "@/api/getDailyWord"
 import { WordleBoard } from "@/components/organism/WordleBoard"
 import { useEffect, useState } from "react"
 import { Grid2x2 } from 'lucide-react';
+import { useDailyWordStore } from "@/store/useDailyWordStore";
 
 function DailyWordle() {
-  const [word, setWord] = useState<string>("")
+  const wordOfTheDay = useDailyWordStore((state) => state.wordOfTheDay)
+  const setWordOfTheDay = useDailyWordStore((state) => state.setWord)
   const [isLoading, setLoading] = useState<boolean>(false)
+  const [resetGame, setResetGame] = useState<boolean>(false)
+
+  function resetGameHandler() {
+    setResetGame((prev) => !prev)
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -13,17 +20,18 @@ function DailyWordle() {
       // mocking api fetch
       try{
         const word = await getDailyWord()
-        setWord(word)
+        setWordOfTheDay(word)
         setTimeout(() => {
           setLoading(false)
-        }, 1500)
+        }, 500)
       }
       catch(e) {
         console.error(e)
       }
     } 
     getWordOfTheDay()
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [resetGame])
 
   if(isLoading){
     return (
@@ -37,7 +45,14 @@ function DailyWordle() {
     )
   }
 
-  return <WordleBoard word={word} />
+  return <>
+     <h1>{wordOfTheDay}</h1>
+     <WordleBoard 
+        word={wordOfTheDay} 
+        onResetGame={resetGameHandler}
+      />
+  </>
+ 
 }
 
 export default DailyWordle

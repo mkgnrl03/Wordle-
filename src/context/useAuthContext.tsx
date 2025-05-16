@@ -13,6 +13,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthContextProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setAuthenticated] = useState<boolean>(false)
   const removeLoggedInUser = useUserStore((state) => state.removeUser)
+  const user = useUserStore((state) => state.user)
  
   function login() {
     setAuthenticated(true)
@@ -25,7 +26,8 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const storedAuth = localStorage.getItem("isAuthenticated")
-    if (storedAuth === "false") {
+    console.log(storedAuth)
+    if (storedAuth === "false" || storedAuth === null || user === null) {
       removeLoggedInUser()
       setAuthenticated(false)
     }

@@ -9,10 +9,11 @@ import { useWordleStore } from "@/store/useWordleStore"
 import type { KeyStatus } from "@/types/wordle-store"
 
 type WordleBoardProp = {
-  word: string
+  word: string,
+  onResetGame: () => void
 }
 
-export const WordleBoard = ({ word }: WordleBoardProp) => {
+export const WordleBoard = ({ word, onResetGame }: WordleBoardProp) => {
   const NUM_TRIES = 5
   const CHAR_CODE_A = 65
   const CHAR_CODE_Z = 90
@@ -177,6 +178,7 @@ export const WordleBoard = ({ word }: WordleBoardProp) => {
       <GameStatus 
         status={gameStatus} 
         onKeyPress={(key) => setKeyPressed(key.toUpperCase())}
+        onResetGame={onResetGame}
       />
     </div>
   )
@@ -210,10 +212,11 @@ const TrialsCard = ({ tries }: { tries: number}) => {
 
 type GameStatusProp = { 
   status: "finish" | "ongoing", 
-  onKeyPress: (key: string) => void
+  onKeyPress: (key: string) => void,
+  onResetGame: () => void
 }
 
-const GameStatus = ({ status, onKeyPress }: GameStatusProp) => {
+const GameStatus = ({ status, onKeyPress, onResetGame }: GameStatusProp) => {
   return (
     <>
     {
@@ -221,7 +224,7 @@ const GameStatus = ({ status, onKeyPress }: GameStatusProp) => {
         ? <div className="mt-24 flex flex-col items-center justify-between">
             <Button 
               className="rounded-full bg-white text-black border hover:bg-white hover:text-black hover:scale-110"
-              onClick={() => window.location.reload()}
+              onClick={() => onResetGame()}
               >
               <RotateCcw size={96}/>
             </Button>

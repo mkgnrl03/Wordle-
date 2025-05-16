@@ -15,8 +15,7 @@ function KeyboardKey({ letter, clickHandler }: Prop) {
     flex items-center justify-center bg-gray-500 
     text-md text-white text-center font-semibold h-fit
     shadow rounded min-h-12 py-1 px-2 min-w-7
-    sm:text-xl sm:px-4 sm:py-4
-  `
+    sm:text-xl sm:px-4 sm:py-4`
 
   function getKeyClassColor(): string {
     if(!selectedKey) return ""

@@ -16,7 +16,7 @@ export const useUserStore = create<UserStore>()((set, get) => ({
     return user ? user : "No user found."
   },
 
-  setUser: (user: User | null) => {
+  setUser: (user: User) => {
     set(() => { 
       return { user }
     })
